@@ -1,0 +1,241 @@
+:root {
+  --primary: #7848b6;
+  --primary-content: #fefeff;
+  --primary-dark: #603a91;
+  --primary-light: #936cc5;
+
+  --secondary: #86b648;
+  --secondary-content: #000000;
+  --secondary-dark: #6b913a;
+  --secondary-light: #9ec56c;
+
+  --background: #efecf4;
+  --foreground: #fbfafc;
+  --border: #ded7e8;
+
+  --copy: #251c31;
+  --copy-light: #624a82;
+  --copy-lighter: #886dab;
+
+  --success: #48b648;
+  --warning: #b6b648;
+  --error: #b64848;
+  --success-content: #000000;
+  --warning-content: #000000;
+  --error-content: #fffefe;
+}
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.ubuntu-mono-regular {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-mono-bold {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-mono-regular-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-mono-bold-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+:root {
+  background-color: var(--background);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 20px);
+  box-sizing: border-box; /* Make sure the margin is included in the height */
+  overflow: hidden; /* Prevent scrolling on the root */
+}
+
+#main-content {
+  display: flex;
+  flex-direction: row;
+  height: calc(
+    100vh - 50px - 30px
+  ); /* Subtract the height of the header and twice the margin */
+  margin-top: 10px;
+  box-sizing: border-box; /* Make sure the margin is included in the height */
+  overflow: auto; /* Allows scrolling within main content if needed */
+}
+
+/* Header */
+#title {
+  color: black;
+  margin-left: 5px;
+  margin-right: auto;
+}
+#header-container {
+  width: fit-content;
+  height: 50px;
+  width: 100%;
+  border-bottom: #000000 solid 3px;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+}
+#header-button-container {
+  margin-left: auto;
+  margin-right: 5px;
+}
+/* Header Buttons */
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  /* The size of the SVG defines the overall size */
+  height: 3em;
+  /* Define the transition for transforming the SVG */
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  background-color: rgba(0, 0, 0, 0);
+  fill: none;
+  stroke: var(--primary);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  /* Define the transition for transforming the Stroke */
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* Settings */
+#settings-container {
+  border: #000000 solid 3px;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.settings-hidden {
+  display: none;
+  height: 0;
+  transition: height 0.5s ease;
+  background-color: #b64848;
+}
+
+.settings-shown {
+  background-color: #624a82;
+  display: block;
+  height: auto;
+  transition: height 0.5s ease;
+}
+
+/* Chatroom */
+#chat-roomslist-container {
+  background-color: var(--primary-light);
+  border: var(--primary-dark) solid 3px;
+  border-radius: 5px;
+  width: 300px; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-right: 10px;
+  flex: 0 0 auto; /* Do not grow or shrink */
+  width: 300px; /* Adjust as necessary */
+  overflow-y: auto; /* Allows scrolling within the chat list if needed */
+}
+
+#chat-roomslist-container ul {
+  background-color: rgba(0, 0, 0, 0);
+}
+#chat-roomslist-container li {
+  background-color: rgba(0, 0, 0, 0);
+  list-style-type: none;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+#chat-roomslist-container li a {
+  background-color: rgba(0, 0, 0, 0);
+  color: #000000;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+#chat-add-chatroom-button {
+  font-size: 24px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-dark);
+  background-color: var(--secondary);
+  color: var(--secondary-content);
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  margin-bottom: 5px;
+  margin-top: auto;
+}
+#chat-add-chatroom-button:hover {
+  background-color: var(--secondary-light);
+  box-shadow: 6px 6px 12px var(--secondary-dark),
+    -6px -6px 12px var(--secondary-light);
+}
+#chat-window-container {
+  background-color: var(--foreground);
+  border: var(--primary-dark) solid 3px;
+  border-radius: 5px;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#chat-send-button {
+  border: var(--secondary-dark) solid 3px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+#chat-send-icon {
+  width: 25px;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 10px;
+}

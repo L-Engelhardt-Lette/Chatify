@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+
+    <title>Chatify</title>
+  </head>
+  <body>
+    <div id="root">
+      <div id="header-container">
+        <h1 id="title" class="ubuntu-mono-bold">Chatify</h1>
+        <div id="header-button-container">
+          <label class="hamburger">
+            <input type="checkbox" />
+            <svg viewBox="0 0 32 32">
+              <path
+                class="line line-top-bottom"
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+              ></path>
+              <path class="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+        </div>
+      </div>
+      <div id="settings-container" class="settings-hidden">
+        <h2>Py Game ist Schlecht</h2>
+      </div>
+      <div id="main-content">
+        <div id="chat-roomslist-container">
+          <ul id="chats-list" class="clearfix">
+            <li><a href="">Test Chat</a></li>
+            <li><a href="">Test Chat</a></li>
+          </ul>
+          <button id="chat-add-chatroom-button">+</button>
+        </div>
+        <!-- Chat window -->
+        <div id="chat-window-container">
+          <div id="chat-textfield-container">
+            <textarea name="" id="chat-textfield"></textarea>
+            <button id="chat-send-button">
+              <img
+                id="chat-send-icon"
+                src="{% static 'icons\send-svgrepo-com.svg' %}"
+                alt="Send Icon"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(
+          '.hamburger input[type="checkbox"]'
+        );
+        const settingsContainer = document.getElementById("settings-container");
+
+        hamburger.addEventListener("change", function () {
+          if (this.checked) {
+            console.log("Settings menu opened!");
+            settingsContainer.classList.replace(
+              "settings-hidden",
+              "settings-shown"
+            );
+          } else {
+            console.log("Settings menu closed!");
+            settingsContainer.classList.replace(
+              "settings-shown",
+              "settings-hidden"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
