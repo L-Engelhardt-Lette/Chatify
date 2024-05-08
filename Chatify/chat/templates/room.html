@@ -4,12 +4,24 @@
   <head>
     <meta charset="utf-8" />
     <title>Chat Room</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   </head>
   <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br />
-    <input id="chat-message-input" type="text" size="100" /><br />
-    <input id="chat-message-submit" type="button" value="Send" />
-    {{ room_name|json_script:"room-name" }}
+    <div id="header-container">
+      <h1 class="ubuntu-mono-bold" id="title">Chatify</h1>
+      <a href="http://127.0.0.1:8000/chat" class="back-btn ubuntu-mono-regular"
+        >Back</a
+      >
+    </div>
+    <div class="Content">
+      <textarea id="chat-log" cols="100" rows="20"></textarea><br />
+      <div class="textsend">
+        <input id="chat-message-input" type="text" size="100" /><br />
+        <input id="chat-message-submit" type="button" value="Send" />
+      </div>
+      {{ room_name|json_script:"room-name" }}
+    </div>
     <script>
       const roomName = JSON.parse(
         document.getElementById("room-name").textContent
