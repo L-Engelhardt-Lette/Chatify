@@ -245,3 +245,13 @@
   height: 100%;
   display: flex;
 }
+
+#btn-back {
+  text-decoration: none;
+  margin: 1em;
+  color: var(--foreground);
+  background-color: var(--primary-dark);
+  padding: 2px;
+  border: var(--primary-light) 2px solid;
+  border-radius: 5px;
+}
