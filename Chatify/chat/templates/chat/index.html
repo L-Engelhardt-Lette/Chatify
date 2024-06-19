@@ -25,6 +25,7 @@
         placeholder="Enter username"
       /><br />
       <button id="room-name-submit" class="ubuntu-mono-bold">Enter</button>
+      <div id="error-message" class="error-message"></div>
     </div>
 
     <script>
@@ -39,6 +40,18 @@
         var roomName = document.querySelector("#room-name-input").value;
         var username =
           document.querySelector("#username-input").value || "Anonymous";
+        var errorMessage = document.querySelector("#error-message");
+        var roomNameInput = document.querySelector("#room-name-input");
+
+        if (!roomName) {
+          errorMessage.textContent = "Room name is required.";
+          roomNameInput.classList.add("error");
+          return;
+        } else {
+          errorMessage.textContent = "";
+          roomNameInput.classList.remove("error");
+        }
+
         localStorage.setItem("username", username); // Store username in local storage
         window.location.pathname = "/chat/" + roomName + "/";
       };

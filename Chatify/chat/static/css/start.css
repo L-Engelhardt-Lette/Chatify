@@ -114,3 +114,13 @@ body {
   transform: scale(0.97);
   box-shadow: 7px 5px 56px -10px var(--primary-light);
 }
+
+.error {
+  border-color: var(--error) !important;
+}
+
+.error-message {
+  color: var(--error);
+  margin-top: 10px;
+  font-size: 14px;
+}
