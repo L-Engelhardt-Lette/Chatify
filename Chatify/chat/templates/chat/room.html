@@ -11,23 +11,27 @@
       <h1 class="ubuntu-mono-bold" id="title">Chatify</h1>
       <a href="javascript:history.back()" id="btn-back">Back</a>
     </div>
-    <div class="Content">
+    <div class="chat-container">
       <div id="chat-log">
         {% for message in messages %}
         <div class="message">
           <strong>{{ message.user }}:</strong> {{ message.text }}
           <br />
-          <small>{{ message.timestamp|date:"M d, Y H:i:s" }}</small>
+          <small class="timestamp">{{ message.timestamp|date:"H:i:s" }}</small>
         </div>
         {% endfor %}
       </div>
-      <div class="textsend">
-        <input id="chat-message-input" type="text" size="100" />
-        <br />
-        <input id="chat-message-submit" type="button" value="Send" />
-      </div>
-      {{ room_name|json_script:"room-name" }}
     </div>
+    <div class="textsend">
+      <input
+        id="chat-message-input"
+        type="text"
+        size="100"
+        placeholder="Type a message..."
+      />
+      <input id="chat-message-submit" type="button" value="Send" />
+    </div>
+    {{ room_name|json_script:"room-name" }}
     <script>
       const roomName = JSON.parse(
         document.getElementById("room-name").textContent
@@ -43,9 +47,11 @@
         const messageElement = document.createElement("div");
         messageElement.classList.add("message");
         const user = data.user || "Anonymous";
-        const timestamp = new Date(data.timestamp).toLocaleString();
-        messageElement.innerHTML = `<strong>${user}:</strong> ${data.message} <br/><small>${timestamp}</small>`; // Updated key to 'message'
+        const timestamp = data.timestamp;
+        messageElement.innerHTML = `<strong>${user}:</strong> ${data.message} <br/><small class="timestamp">${timestamp}</small>`;
         document.querySelector("#chat-log").appendChild(messageElement);
+        document.querySelector("#chat-log").scrollTop =
+          document.querySelector("#chat-log").scrollHeight; // Scroll to the bottom
       };
 
       chatSocket.onclose = function (e) {
@@ -65,7 +71,7 @@
         chatSocket.send(
           JSON.stringify({
             user: username,
-            message: message, // Ensure the key is 'message'
+            message: message,
             timestamp: new Date().toISOString(),
           })
         );

@@ -29,6 +29,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         user = text_data_json['user']
         timestamp = text_data_json['timestamp']
 
+        # Format timestamp to only include hours, minutes, and seconds
+        timestamp = timestamp.split('T')[1].split('.')[0]
+
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
