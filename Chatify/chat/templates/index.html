@@ -4,11 +4,19 @@
   <head>
     <meta charset="utf-8" />
     <title>Chat Rooms</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/start.css' %}" />
   </head>
   <body>
-    What chat room would you like to enter?<br />
-    <input id="room-name-input" type="text" size="100" /><br />
-    <input id="room-name-submit" type="button" value="Enter" />
+    <div id="container">
+      <div id="inner">
+        <h1 class="ubuntu-mono-bold">
+          What chat room would you like to enter?<br />
+        </h1>
+        <input id="room-name-input" type="text" size="100" /><br />
+        <button id="room-name-submit" class="ubuntu-mono-bold">Enter</button>
+      </div>
+    </div>
 
     <script>
       document.querySelector("#room-name-input").focus();

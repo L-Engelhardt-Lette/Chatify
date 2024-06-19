@@ -1,0 +1,97 @@
+:root {
+  --primary: #7848b6;
+  --primary-content: #fefeff;
+  --primary-dark: #603a91;
+  --primary-light: #936cc5;
+
+  --secondary: #86b648;
+  --secondary-content: #000000;
+  --secondary-dark: #6b913a;
+  --secondary-light: #9ec56c;
+
+  --background: #efecf4;
+  --foreground: #fbfafc;
+  --border: #ded7e8;
+
+  --copy: #251c31;
+  --copy-light: #624a82;
+  --copy-lighter: #886dab;
+
+  --success: #48b648;
+  --warning: #b6b648;
+  --error: #b64848;
+  --success-content: #000000;
+  --warning-content: #000000;
+  --error-content: #fffefe;
+}
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.ubuntu-mono-regular {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-mono-bold {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-mono-regular-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-mono-bold-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+:root {
+  background-color: var(--background);
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#inner {
+  display: inline;
+  text-align: center;
+}
+#inner #room-name-input {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#room-name-submit {
+  font-size: large;
+  margin: 10px;
+  padding-left: 33px;
+  padding-right: 33px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  border-radius: 9px;
+  background: var(--primary);
+  color: var(--primary-content);
+  border: none;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#room-name-submit:hover {
+  box-shadow: 7px 5px 56px -14px var(--primary-light);
+}
+
+#room-name-submit:active {
+  transform: scale(0.97);
+  box-shadow: 7px 5px 56px -10px var(--primary-light);
+}
