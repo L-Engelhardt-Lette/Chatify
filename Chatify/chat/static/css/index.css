@@ -18,7 +18,7 @@ body {
 
 .chat-container {
   width: 100%; /* Make full width of usable viewport */
-  max-width: 800px;
+  max-width: 97vw;
   min-width: 300px;
   background-color: white;
   border: 1px solid #ccc;
@@ -53,6 +53,7 @@ body {
   padding: 2px 8px;
   border: var(--primary-light) 2px solid;
   border-radius: 5px;
+  color: white;
 }
 
 #chat-log {
